@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HELLO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <thead class = "thead-strong">
+    <tr>
+        <th>게시글번호</th>
+        <th>책 저자</th>
+        <th>책 제목</th>
+        <th>내용</th>
+        <th>읽은 날</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#BoardDTO}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{author}}</td>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+            <td>{{readDate}}</td>
+        </tr>
+    {{/BoardDTO}}
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/js/app/index.js"></script>
+</body>
+</html>
