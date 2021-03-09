@@ -1,6 +1,8 @@
 package org.example.boardProject.dao;
 
+import org.example.boardProject.component.ConnectionMaker;
 import org.example.boardProject.dto.Board;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,6 +10,9 @@ import java.util.ArrayList;
 
 @Repository("boardDao")
 public class BoardDaoImpl implements BoardDao{
+
+    @Autowired
+    private ConnectionMaker connectionMaker;
 
     @Override
     public ArrayList<Board> findAll() throws ClassNotFoundException, SQLException {
@@ -63,11 +68,7 @@ public class BoardDaoImpl implements BoardDao{
         return boardList;
     }
 
-
     public Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(
-                "jdbc:mysql://localhost/test","root","tkfkd1614!"
-        );
+        return connectionMaker.getConnection();
     }
 }
