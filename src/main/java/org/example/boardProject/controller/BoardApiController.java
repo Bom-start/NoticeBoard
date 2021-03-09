@@ -2,6 +2,7 @@ package org.example.boardProject.controller;
 
 import org.example.boardProject.dto.Board;
 import org.example.boardProject.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ public class BoardApiController {
 
     private final BoardService boardService;
 
+    @Autowired
     public BoardApiController(BoardService boardService){
         this.boardService = boardService;
     }

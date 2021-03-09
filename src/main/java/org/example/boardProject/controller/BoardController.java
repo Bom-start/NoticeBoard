@@ -1,6 +1,7 @@
 package org.example.boardProject.controller;
 import org.example.boardProject.dto.Board;
 import org.example.boardProject.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    @Autowired
     public BoardController(BoardService boardService){
         this.boardService = boardService;
     }

@@ -1,6 +1,7 @@
 package org.example.boardProject.dao;
 
 import org.example.boardProject.component.ConnectionMaker;
+import org.example.boardProject.component.ConnectionMakerImpl;
 import org.example.boardProject.dto.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,11 +9,15 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 
-@Repository("boardDao")
+@Repository
 public class BoardDaoImpl implements BoardDao{
 
+    private final ConnectionMaker connectionMaker;
+
     @Autowired
-    private ConnectionMaker connectionMaker;
+    public BoardDaoImpl(ConnectionMaker connectionMaker){
+        this.connectionMaker = connectionMaker;
+    }
 
     @Override
     public ArrayList<Board> findAll() throws ClassNotFoundException, SQLException {
