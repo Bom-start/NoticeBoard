@@ -11,7 +11,7 @@ public class ConnectionMakerImpl implements ConnectionMaker{
     public Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/Board?user=root","root","anstnfla25"
+                "","",""
         );
     }
 }
