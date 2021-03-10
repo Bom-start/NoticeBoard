@@ -21,6 +21,17 @@ public class BoardDaoImpl implements BoardDao{
     }
 
 
+    @Override
+    public void delete(int id) throws SQLException, ClassNotFoundException {
+        Connection c = getConnection();
+        PreparedStatement ps = c.prepareStatement("DELETE FROM Board WHERE id = ?");
+        ps.setInt(1,id);
+//        System.out.println(id);
+        ps.executeUpdate();
+        ps.close();
+        c.close();
+    }
+
     public int update(int id, PostsUpdatedto postsUpdatedto) throws ClassNotFoundException, SQLException {
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement("UPDATE `Board` SET title=?,author=?,content=?,readDate=?");

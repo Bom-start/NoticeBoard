@@ -41,4 +41,10 @@ public class BoardService {
         boardDao.update(id,requestDto);
         return id;
     }
+
+    public void delete(int id) throws SQLException,ClassNotFoundException{
+        Board board = boardDao.findById(id);
+        boardDao.delete(id);
+
+    }
 }

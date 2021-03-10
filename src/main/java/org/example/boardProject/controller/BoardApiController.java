@@ -27,5 +27,10 @@ public class BoardApiController {
     public int update(@PathVariable int id, @RequestBody PostsUpdatedto requestDto) throws SQLException, ClassNotFoundException {
         return boardService.update(id, requestDto);
     }
+    @DeleteMapping("/board/api/delete/{id}")
+    public int delete(@PathVariable int id) throws SQLException, ClassNotFoundException {
+        boardService.delete(id);
+        return id;
+    }
 
 }
