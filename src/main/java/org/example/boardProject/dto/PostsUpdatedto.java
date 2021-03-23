@@ -1,23 +1,28 @@
 package org.example.boardProject.dto;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
-@Setter
+
 @Getter
-public class Board {
-    private int id;
-    private String author;
+@NoArgsConstructor
+public class PostsUpdatedto {
     private String title;
     private String content;
+    private String author;
     private Date readDate;
 
-    public void update(String title, String content,String author, Date readDate) {
+
+    @Builder
+    public PostsUpdatedto(String title,String content,String author,Date readDate){
         this.title=title;
         this.content=content;
         this.author=author;
         this.readDate=readDate;
+
     }
 }

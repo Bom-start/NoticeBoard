@@ -3,6 +3,7 @@ package org.example.boardProject.dao;
 import org.example.boardProject.component.ConnectionMaker;
 import org.example.boardProject.component.ConnectionMakerImpl;
 import org.example.boardProject.dto.Board;
+import org.example.boardProject.dto.PostsUpdatedto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,31 @@ public class BoardDaoImpl implements BoardDao{
         this.connectionMaker = connectionMaker;
     }
 
+
+    @Override
+    public void delete(int id) throws SQLException, ClassNotFoundException {
+        Connection c = getConnection();
+        PreparedStatement ps = c.prepareStatement("DELETE FROM Board WHERE id = ?");
+        ps.setInt(1,id);
+//        System.out.println(id);
+        ps.executeUpdate();
+        ps.close();
+        c.close();
+    }
+
+    public int update(int id, PostsUpdatedto postsUpdatedto) throws ClassNotFoundException, SQLException {
+        Connection c = getConnection();
+        PreparedStatement ps = c.prepareStatement("UPDATE `Board` SET title=?,author=?,content=?,readDate=?");
+        ps.setString(1,postsUpdatedto.getTitle());
+        ps.setString(2,postsUpdatedto.getAuthor());
+        ps.setString(3,postsUpdatedto.getContent());
+        ps.setDate(4,postsUpdatedto.getReadDate());
+        int affected = ps.executeUpdate();
+
+        ps.close();
+        c.close();
+        return affected;
+    }
     @Override
     public ArrayList<Board> findAll() throws ClassNotFoundException, SQLException {
         Connection c = getConnection();
