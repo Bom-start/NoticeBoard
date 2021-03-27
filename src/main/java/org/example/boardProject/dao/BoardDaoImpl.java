@@ -20,7 +20,6 @@ public class BoardDaoImpl implements BoardDao{
         this.connectionMaker = connectionMaker;
     }
 
-
     @Override
     public void delete(int id) throws SQLException, ClassNotFoundException {
         Connection c = getConnection();
@@ -45,6 +44,7 @@ public class BoardDaoImpl implements BoardDao{
         c.close();
         return affected;
     }
+
     @Override
     public ArrayList<Board> findAll() throws ClassNotFoundException, SQLException {
         Connection c = getConnection();
